@@ -55,6 +55,21 @@ npm install @material-ui/core
 ```
 In ```components/layout.js``` use `Head` element from `next/head` to add `title`, and `Container` from `@material-ui/core/Container` to design pages.
 
+## Create api call
+
+Remove `pages/api/hello.js` and create new file `pages/api/posts.js`. It will be API route that returns a list of articles.
+
+This route will be able on [http://localhost:3000/api/posts]
+
+As I'm going to use database. I will use 
+[mocker-data-generator](https://github.com/danibram/mocker-data-generator#readme).
+
+Install mocker-data-generator:
+
+```bash
+npm install mocker-data-generator
+```
+In `pages/api/posts.js` create getData function that simulates data fetching from DB
 
 ---
 
