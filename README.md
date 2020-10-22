@@ -110,6 +110,58 @@ Implement `Card` in `pages/index.js`:
         />
     ))}
 ```
+## Add form on new-articles page
+
+Add basic element for form, I use [`TextField`](https://material-ui.com/components/text-fields/#textfield) and [`Button`](https://material-ui.com/api/button/#button-api) 
+
+```JSX
+    <form noValidate autoComplete="off">
+        <div>
+            <TextField placeholder="Add a title" />
+        </div>
+        <Button color="primary">Submit</Button>
+    </form>
+```
+
+For keeping and setting input value I use useState hook. I want to avoid recreating `onChangeTitle` on every change so I will use useCallback hook 
+
+```JSX
+export default function newArticles() {
+	const [title, setTitle] = useState('');
+	const onChangeTitle = useCallback((e) => setTitle(e.target.value), []);
+	return (
+		<Layout>
+			<form noValidate autoComplete="off">
+				<div>
+					<TextField
+						placeholder="Add a title"
+						value={title}
+						onChange={onChangeTitle}
+					/>
+				</div>
+				<Button color="primary">Submit</Button>
+			</form>
+		</Layout>
+	)
+}
+```
+
+Add `onSubmit` function to `form` and to `<Button/>`:
+
+```JSX
+	const onSubmit = (e) => {
+		e.preventDefault();
+		console.log({
+			title,
+		})
+	}
+```
+
+Then I add other inputs the same way.
+
+
+
+---
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
