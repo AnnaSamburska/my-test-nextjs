@@ -30,6 +30,32 @@ git branch -M main
 git remote add origin [https://github.com/user/repo.git]
 git push -u origin main
 ```
+
+## Create two empty pages
+Open `pages/index.js`, remove old content, leave only simple functional component:
+```javascript
+export default function Home() {
+    return (
+            <div>
+                Will be a list of articles
+            </div>
+        )
+    }
+```
+This will be the first page (list of articles). It will work on [http://localhost:3000].
+
+Create the second page (a form to post new articles) `/pages/new-articles.js` It will work on [http://localhost:3000/new-articles]
+
+Create new folder on top level and add file for layout component `components/layout.js`. This component is used for general style and elements on pages.
+
+Then install Material-UI:
+
+```bash
+npm install @material-ui/core
+```
+In ```components/layout.js``` use `Head` element from `next/head` to add `title`, and `Container` from `@material-ui/core/Container` to design pages.
+
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

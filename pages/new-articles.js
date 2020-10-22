@@ -1,9 +1,9 @@
 import Layout from '../components/layout';
 
-export default function Home() {
+export default function newArticles() {
   return (
     <Layout>
-      Will be a list of articles
+      Will be a form
     </Layout>
   )
 }
