@@ -71,6 +71,45 @@ npm install mocker-data-generator
 ```
 In `pages/api/posts.js` create getData function that simulates data fetching from DB
 
+
+## Render posts from api call on the first page
+
+I use `getStaticProps` to fetch data at build time. As I have no DB, I will call `getData` directly from `pages/api/posts.js`` to simulate data fetching from DB.
+```javascript
+export async function getStaticProps() {
+	const { posts } = await getData();
+	return {
+		props: {
+			posts,
+		}
+	};
+}
+```
+Map posts:
+```javascript
+export default function Home({ posts }) {
+	return (
+		<Layout>
+            {posts.map(post => 
+                JSON.stringify(post);
+            )}
+		</Layout>
+	)
+}
+```
+Create `components/card.js` and use [cards](https://material-ui.com/components/cards/) to design each post.
+
+Implement `Card` in `pages/index.js`:
+```javascript
+    {posts.map(post => (
+        <Card
+            key={post.id}
+            title={post.title}
+            description={post.description}
+            createdAt={post.createdAt}
+        />
+    ))}
+```
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
